@@ -18,63 +18,66 @@
     <title>Registration</title>
     <link rel="stylesheet" href="views/bootstrap-4.3.1-dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/views/StyleButton.css">
+    <link rel="stylesheet" href="/views/style/StyleButton.css">
 
 
 </head>
 <body>
-<form action="" style="width: 150px;">
+<form action="">
     <select class="custom-select  select-size" id="language" name="language"
-            onchange="submit()">
+            onchange="submit()" style="width: 150px; margin-right: 80%; margin-top: 10px;">
         <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-        <option value="de" ${language == 'de' ? 'selected' : ''}>German</option>
-        <option value="fr" ${language == 'fr' ? 'selected' : ''}>France</option>
+        <option value="ru" ${language == 'ru' ? 'selected' : ''}>Русский</option>
     </select>
 </form>
-<p>Registration:</p>
+<p><fmt:message
+        key="reg.registration"/></p>
 
 <form action="${pageContext.servletContext.contextPath}/register" method="POST">
     <label for="email">
-        Email:
-    </label>
+        <fmt:message
+                key="reg.email"/> </label>
     <input class="inputForm" type="email" id="email" name="email"
-           placeholder="Email" pattern=${REGEX_FOR_EMAIL}  autocomplete="off" required>
+           placeholder=
+           <fmt:message key="reg.email"/>   pattern=${REGEX_FOR_EMAIL} autocomplete="off" required>
 
-    <label for="password">
-        Password:
-    </label>
+    <label for="password"> <fmt:message key="reg.password"/> </label>
     <input class="inputForm" type="password" id="password" name="password"
-         pattern=${REGEX_FOR_PASSWORD} placeholder="Password"  autocomplete="off" required>
+           pattern=${REGEX_FOR_PASSWORD} placeholder=
+    <fmt:message key="reg.password"/> autocomplete="off" required>
 
     <label for="ConfirmPassword">
-        Confirm Password:
+        <fmt:message key="reg.confPass"/>
     </label>
     <input class="inputForm" type="password" id="ConfirmPassword" name="ConfirmPassword"
-         pattern=${REGEX_FOR_PASSWORD} placeholder="ConfirmPassword"  autocomplete="off" required>
+           pattern=${REGEX_FOR_PASSWORD} placeholder=
+    <fmt:message key="reg.confPass"/> autocomplete="off" required>
     <label for="name">
-        Name:
+        <fmt:message key="reg.name"/>
     </label>
     <input class="inputForm" type="text" id="Name" name="Name"
-        pattern=${REGEX_FOR_NAME}   placeholder="Name"  autocomplete="off" required>
-   <label for="SecondName">
-       SecondName:
+           pattern=${REGEX_FOR_NAME}   placeholder=
+    <fmt:message key="reg.name"/> autocomplete="off" required>
+    <label for="SecondName">
+        <fmt:message key="reg.secontName"/>
     </label>
     <input class="inputForm" type="text" id="SecondName" name="SecondName"
-           pattern=${REGEX_FOR_NAME}     placeholder="SecondName"  autocomplete="off" required>
+           pattern=${REGEX_FOR_NAME}     placeholder=
+    <fmt:message key="reg.secontName"/> autocomplete="off" required>
     <label for="Phone">
-        Phone:
+        <fmt:message key="reg.phone"/>
     </label>
     <input class="inputForm" type="text" id="Phone" name="Phone" pattern=${REGEX_FOR_PHONE_NUMBER}
-           placeholder="Phone" maxlength="13" minlength="10" autocomplete="off" required>
+            placeholder=
+    <fmt:message key="reg.phone"/>
+           maxlength="13" minlength="10" autocomplete="off" required>
 
-    <input type="submit" value="Submit">
+    <input type="submit" value= <fmt:message key="reg.button.submite"/>>
 
-    <a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/menu">Back to Menu </a>
+    <a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/menu"><fmt:message key="reg.button.backToMenu"/></a>
     </div>
 
 </form>
-
-
 
 
 <!-- подключение popper.js, необходимого для корректной работы некоторых плагинов Bootstrap 4 -->

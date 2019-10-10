@@ -1,7 +1,6 @@
-package stone.repository;
+package stone.repository.contract;
 
 
-import org.springframework.stereotype.Component;
 import stone.domain.Order;
 public interface OrderCrudRepository extends CrudRepository<Order> {
 

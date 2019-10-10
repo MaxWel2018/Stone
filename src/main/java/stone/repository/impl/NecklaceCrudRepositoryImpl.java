@@ -2,7 +2,7 @@ package stone.repository.impl;
 
 import org.springframework.stereotype.Repository;
 import stone.domain.Necklace;
-import stone.repository.NecklaceCrudRepository;
+import stone.repository.contract.NecklaceCrudRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,5 +43,10 @@ public class NecklaceCrudRepositoryImpl implements NecklaceCrudRepository {
         Necklace necklace = idToNecklace.remove(id);
         updateIndices();
         return necklace;
+    }
+
+    @Override
+    public Integer size() {
+        return idToNecklace.size();
     }
 }

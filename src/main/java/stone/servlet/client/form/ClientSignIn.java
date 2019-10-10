@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import stone.domain.Client;
 import stone.exception.dontCorrectArgumentRuntimeException;
-import stone.service.ClientService;
+import stone.service.contract.ClientService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

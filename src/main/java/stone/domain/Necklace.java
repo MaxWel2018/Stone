@@ -6,10 +6,16 @@ import java.util.List;
 public class Necklace {
     private Long id;
     private List<Stone> necklaces = new ArrayList<>();
+    private Integer cost;
+    private Double weight;
 
-
-    public Necklace(List<Stone> necklaces) {
+    public Necklace(List<Stone> necklaces, Integer cost, Double weight) {
         this.necklaces = necklaces;
+        this.cost = cost;
+        this.weight = weight;
+    }
+
+    public Necklace() {
     }
 
     public List<Stone> getNecklaces() {
@@ -26,5 +32,21 @@ public class Necklace {
 
     public void setNecklaces(List<Stone> necklaces) {
         this.necklaces = necklaces;
+    }
+
+    public Integer getCost() {
+        return cost;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setCost(Integer cost) {
+        this.cost = cost;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 }

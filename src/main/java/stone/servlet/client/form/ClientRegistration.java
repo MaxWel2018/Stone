@@ -5,7 +5,7 @@ import stone.domain.Client;
 import org.springframework.stereotype.Component;
 import stone.exception.dontCorrectArgumentRuntimeException;
 import stone.exception.dontCorrectPasswordRuntimeEcxeption;
-import stone.repository.ClientCrudRepository;
+import stone.repository.contract.ClientCrudRepository;
 import stone.service.ValidateService;
 import stone.service.PasswordInCode;
 import stone.utility.RegexTemplate;

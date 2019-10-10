@@ -1,8 +1,8 @@
-package stone.servlet.client;
+package stone.servlet.client.authorization;
 
 import stone.domain.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import stone.service.ClientService;
+import stone.service.contract.ClientService;
 import stone.servlet.AbstractServlet;
 import stone.servlet.client.form.ClientRegistration;
 

@@ -13,14 +13,14 @@ public class ValidateService {
         pattern = Pattern.compile(regexTemplate);
         matcher = pattern.matcher(parameter);
         if (!matcher.matches()) {
-            throw new dontCorrectArgumentRuntimeException("The received data does not match the specified pattern\n");
+            throw new dontCorrectArgumentRuntimeException("The received data does not match the specified pattern");
         }
     }
 
 
     public static void notNull(Object o) {
         if (o == null) {
-            throw new dontCorrectArgumentRuntimeException("dont correct argument");
+            throw new dontCorrectArgumentRuntimeException("Arrgument = Null");
 
         }
     }

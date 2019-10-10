@@ -2,7 +2,7 @@ package stone.repository.impl;
 
 import org.springframework.stereotype.Repository;
 import stone.domain.Order;
-import stone.repository.OrderCrudRepository;
+import stone.repository.contract.OrderCrudRepository;
 
 import java.util.HashMap;
 import java.util.Map;

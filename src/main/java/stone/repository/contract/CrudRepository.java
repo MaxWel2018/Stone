@@ -1,4 +1,4 @@
-package stone.repository;
+package stone.repository.contract;
 
 import java.util.Optional;
 

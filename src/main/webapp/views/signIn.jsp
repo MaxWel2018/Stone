@@ -18,33 +18,32 @@
     <title>SignIn</title>
     <link rel="stylesheet" href="views/bootstrap-4.3.1-dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/views/StyleButton.css">
+    <link rel="stylesheet" href="/views/style/StyleButton.css">
 
 
 </head>
 <body>
-<form action="" style="width: 150px;">
+<form action="">
     <select class="custom-select  select-size" id="language" name="language"
-            onchange="submit()">
+            onchange="submit()" style="width: 150px; margin-right: 80%; margin-top: 10px;">
         <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-        <option value="de" ${language == 'de' ? 'selected' : ''}>German</option>
-        <option value="fr" ${language == 'fr' ? 'selected' : ''}>France</option>
+        <option value="ru" ${language == 'ru' ? 'selected' : ''}>Русский</option>
     </select>
 </form>
 
-<p>Sing In</p>
+<p><fmt:message key="menu.button.signIn"/></p>
 <form action=${pageContext.servletContext.contextPath}/authorization method="post">
-<label for="email">
-    Email
-    <input name="Email"  type="email" id="email" placeholder="Email">
-</label>
-<label for="password">
-    Password
-    <input name="password"  type="password" id="password" placeholder="password">
-</label>
-    <input type="submit" value="submit">
+    <label for="email">
+        <fmt:message key="reg.email"/>
+        <input name="Email" type="email" id="email" placeholder=  <fmt:message key="reg.email"/>>
+    </label>
+    <label for="password">
+        <fmt:message key="reg.password"/>
+        <input name="password" type="password" id="password" placeholder=<fmt:message key="reg.password"/>>
+    </label>
+    <input type="submit" value=  <fmt:message key="reg.button.submite"/>>
 </form>
-<a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/menu">Back to Menu </a>
+<a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/menu">  <fmt:message key="reg.button.backToMenu"/> </a>
 
 <!-- подключение popper.js, необходимого для корректной работы некоторых плагинов Bootstrap 4 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"

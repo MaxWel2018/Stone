@@ -1,12 +1,15 @@
-package stone.service;
+package stone.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stone.domain.Order;
 import stone.exception.dontCorrectArgumentRuntimeException;
-import stone.repository.OrderCrudRepository;
+import stone.repository.contract.OrderCrudRepository;
+import stone.service.contract.OrderService;
 
 import java.util.Optional;
+
+import static stone.service.ValidateService.notNull;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -16,6 +19,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     public OrderServiceImpl(OrderCrudRepository orderRepository) {
         this.orderRepository = orderRepository;
+    }
+
+    @Override
+    public Order register(Order client) {
+        notNull(client);
+       return orderRepository.save(client);
     }
 
     @Override

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: krugo
-  Date: 25.09.2019
-  Time: 2:48
+  User: Max
+  Date: 10/8/2019
+  Time: 11:31 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="UTF-8" %>
@@ -15,13 +15,11 @@
 <fmt:setBundle basename="messages"/>
 <html lang="${param.lang}">
 <head>
-    <title>Order</title>
-    <link rel="stylesheet" href="/views/style/styleOrder.css">
+    <title>Sort</title>
+    <link rel="stylesheet" href="/views/style/styleCatalog.css">
     <link rel="stylesheet" href="views/bootstrap-4.3.1-dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/views/style/StyleButton.css">
-
-
 </head>
 <body>
 <form action="">
@@ -30,18 +28,32 @@
         <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
         <option value="ru" ${language == 'ru' ? 'selected' : ''}>Русский</option>
     </select>
+
     <a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/logOut"> <fmt:message
             key="menu.button.logOut"/>
     </a>
 </form>
-<a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/catalog">Back to Catalog </a>
+<a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/backet"><fmt:message key="filter.backToBacket"/> </a>
 
 
-<p style="color:white; font-size: 30px">Уважаемый ${name} ${surName}  Ваш заказ передан в обработку! Ожидайте СМС от службы доставки </p>
-<!-- подключение popper.js, необходимого для корректной работы некоторых плагинов Bootstrap 4 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-</script>
-<script src="views/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<div class="wrapper">
+    <form action="${pageContext.servletContext.contextPath}/catalog" method="post">
+        <div class="flex" STYLE="flex-wrap: wrap;">
+
+            <c:forEach items="${stonesSort}" var="stone">
+                <label class="element">
+                    <p><fmt:message key="catalog.text.type"/> ${stone.getType()}</p>
+                    <p><fmt:message key="catalog.text.color"/>  ${stone.getColor()}</p>
+                    <p><fmt:message key="catalog.text.weight"/>  ${stone.getWeight()}</p>
+                    <p><fmt:message key="catalog.text.transparency"/>  ${stone.getTransparency()}</p>
+                    <p><fmt:message key="catalog.text.price"/>  ${stone.getPrice()}$</p>
+                    <img style="width: 200px; height: 200px;" src="${stone.getImg()}" alt="img"/>
+                </label>
+            </c:forEach>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 </body>
 </html>

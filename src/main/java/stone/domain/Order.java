@@ -8,7 +8,7 @@ public class Order {
     private String email;
     private List<Necklace> order = new ArrayList<>();
 
-    public Order( String email, List<Necklace> order) {
+    public Order( String email, Necklace necklace) {
         this.email = email;
         this.order = order;
     }
@@ -27,6 +27,10 @@ public class Order {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void addNecklaceToOrder(Necklace necklace) {
+        order.add(necklace);
     }
 
     public List<Necklace> getOrder() {

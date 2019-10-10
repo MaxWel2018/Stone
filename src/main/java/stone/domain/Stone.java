@@ -3,7 +3,9 @@ package stone.domain;
 import stone.enums.Color;
 import stone.enums.Transparency;
 
-public abstract class Stone {
+import static stone.service.ValidateService.notNull;
+
+public abstract class Stone implements Comparable<Stone> {
     protected Long id;
     protected  Color color;
     protected  Integer price;
@@ -68,4 +70,9 @@ public abstract class Stone {
         return type;
     }
 
+    @Override
+    public int compareTo(Stone o) {
+        notNull(o);
+        return this.price - o.price;
+    }
 }

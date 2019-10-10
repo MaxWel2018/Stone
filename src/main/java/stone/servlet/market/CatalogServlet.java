@@ -1,7 +1,7 @@
 package stone.servlet.market;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import stone.repository.StoneCrudRepository;
+import stone.repository.contract.StoneCrudRepository;
 import stone.servlet.AbstractServlet;
 
 import javax.servlet.ServletException;
@@ -27,14 +27,10 @@ public class CatalogServlet extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String[] selectedItem = req.getParameterValues("selected");
         HttpSession session = req.getSession();
         session.setAttribute("selectedItem", selectedItem);//id items
-
-
-        resp.sendRedirect(String.format("%s%s", req.getContextPath(), "/order"));
-        //TODO перенаправить на корзину с покупками + юзверя данные записать
+        resp.sendRedirect(String.format("%s%s", req.getContextPath(), "/backet"));
 
     }
 }

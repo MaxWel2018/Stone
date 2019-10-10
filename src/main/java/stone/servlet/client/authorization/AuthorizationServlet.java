@@ -1,32 +1,31 @@
-package stone.servlet.market;
+package stone.servlet.client.authorization;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import stone.servlet.AbstractServlet;
+import stone.servlet.client.form.ClientSignIn;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/backet")
-public class OrderServlet extends AbstractServlet {
-    @Autowired
-    private CreatingNecklace creatingNecklace;
+@WebServlet("/authorization")
+public class AuthorizationServlet extends AbstractServlet {
 
+    @Autowired
+    ClientSignIn clientSignIn;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        creatingNecklace.createNecklace(req);
-        HttpSession session = req.getSession();
-        session.removeAttribute("stones");
-        req.getRequestDispatcher("/views/backet.jsp").forward(req, resp);
+
+        req.getRequestDispatcher("/views/signIn.jsp").forward(req, resp);
 
     }
 
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        clientSignIn.checkDate(req);
+        resp.sendRedirect(String.format("%s%s", req.getContextPath(), "/catalog"));
+
     }
 }

@@ -1,12 +1,14 @@
-package stone.service;
+package stone.service.impl;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stone.domain.Client;
 import stone.exception.dontCorrectArgumentRuntimeException;
-import stone.repository.ClientCrudRepository;
-import stone.repository.StoneCrudRepository;
+import stone.repository.contract.ClientCrudRepository;
+import stone.repository.contract.StoneCrudRepository;
+import stone.service.contract.ClientService;
+import stone.service.PasswordInCode;
 
 import java.util.Optional;
 
@@ -32,7 +34,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client deleteById(Long id) {
-        if (id < 0 && id < clientRepository.size()) {
+        if (id < 0 || id > clientRepository.size()) {
+            LOGGER.info("Client dont found");
             throw new dontCorrectArgumentRuntimeException("Client dont found");
         }
         return clientRepository.deleteById(id);

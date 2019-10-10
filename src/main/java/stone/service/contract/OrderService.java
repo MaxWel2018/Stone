@@ -1,4 +1,4 @@
-package stone.service;
+package stone.service.contract;
 
 import stone.domain.Order;
 

@@ -2,7 +2,7 @@ package stone.repository.impl;
 
 import stone.domain.Client;
 import org.springframework.stereotype.Repository;
-import stone.repository.ClientCrudRepository;
+import stone.repository.contract.ClientCrudRepository;
 import stone.service.PasswordInCode;
 import stone.service.ValidateService;
 
