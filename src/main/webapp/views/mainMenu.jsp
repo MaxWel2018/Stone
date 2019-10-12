@@ -5,7 +5,7 @@
   Time: 2:48
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" errorPage="error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
@@ -34,6 +34,10 @@
             key="menu.button.logOut"/>
     </a>
 </form>
+<div class="wellcome">
+    <p><fmt:message key="menu.text.wellcome"/></p>
+    <span> <fmt:message key="menu.text.wellcome2"/></span>
+</div>
 <section class="my-section">
     <div class="menu-menu">
         <div class="button-menu">
@@ -51,10 +55,6 @@
 
     </div>
 </section>
-<div class="wellcome">
-    <p><fmt:message key="menu.text.wellcome"/></p>
-    <span> <fmt:message key="menu.text.wellcome2"/></span>
-</div>
 <!-- подключение popper.js, необходимого для корректной работы некоторых плагинов Bootstrap 4 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">

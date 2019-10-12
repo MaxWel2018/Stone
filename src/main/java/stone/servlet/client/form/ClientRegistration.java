@@ -1,11 +1,11 @@
 package stone.servlet.client.form;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import stone.domain.Client;
+import stone.domain.User;
 import org.springframework.stereotype.Component;
 import stone.exception.dontCorrectArgumentRuntimeException;
 import stone.exception.dontCorrectPasswordRuntimeEcxeption;
-import stone.repository.contract.ClientCrudRepository;
+import stone.repository.contract.UserCrudRepository;
 import stone.service.ValidateService;
 import stone.service.PasswordInCode;
 import stone.utility.RegexTemplate;
@@ -23,21 +23,21 @@ public class ClientRegistration {
     private String surName;
     private String phone;
 
-    private final ClientCrudRepository clientRepository;
+    private final UserCrudRepository clientRepository;
 
     @Autowired
-    public ClientRegistration(ClientCrudRepository clientRepository) {
+    public ClientRegistration(UserCrudRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
 
-    public Client createClient(HttpServletRequest req) {
+    public User createClient(HttpServletRequest req) {
         saveData(req);
         if (!password.equals(confirmPassword)) {
             throw new dontCorrectPasswordRuntimeEcxeption("Passwords do not match");
         }
         ValidateService.validate(email, RegexTemplate.REGEX_FOR_EMAIL);
-        Optional<Client> client = clientRepository.findByEmail(email);
+        Optional<User> client = clientRepository.findByEmail(email);
         if (client.isPresent()) {
             throw new dontCorrectArgumentRuntimeException("The User is already registered ");
         }
@@ -47,7 +47,7 @@ public class ClientRegistration {
         ValidateService.validate(phone, RegexTemplate.REGEX_FOR_PHONE_NUMBER);
         ValidateService.validate(surName, RegexTemplate.REGEX_FOR_NAME);
         encodedPassword = PasswordInCode.passwordEncoded(password);
-        return Client.builder()
+        return User.builder()
                 .withName(name)
                 .withEmail(email)
                 .withPassword(encodedPassword)

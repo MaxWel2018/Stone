@@ -2,15 +2,16 @@ package stone.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Order {
+public final class Order {
     private Long id;
-    private String email;
-    private List<Necklace> order = new ArrayList<>();
+    private final String email;
+    private final Necklace order;
 
-    public Order( String email, Necklace necklace) {
+    public Order(String email, Necklace necklace) {
         this.email = email;
-        this.order = order;
+        this.order = new Necklace(necklace.getNecklaces(), necklace.getCost(), necklace.getWeight());
     }
 
     public Long getId() {
@@ -21,23 +22,29 @@ public class Order {
         this.id = id;
     }
 
+    public Necklace getOrder() {
+        return order;
+    }
+
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Order order1 = (Order) o;
+        return email.equals(order1.email) &&
+                order.equals(order1.order);
     }
 
-    public void addNecklaceToOrder(Necklace necklace) {
-        order.add(necklace);
-    }
-
-    public List<Necklace> getOrder() {
-        return order;
-    }
-
-    public void setOrder(List<Necklace> order) {
-        this.order = order;
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, order);
     }
 }

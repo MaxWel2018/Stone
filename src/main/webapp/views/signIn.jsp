@@ -5,7 +5,7 @@
   Time: 2:48
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" errorPage="error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
@@ -16,6 +16,8 @@
 <html lang="${param.lang}">
 <head>
     <title>SignIn</title>
+    <link rel="stylesheet" href="/views/style/styleRegistration.css">
+    <link rel="stylesheet" href="/views/style/styleCatalog.css">
     <link rel="stylesheet" href="views/bootstrap-4.3.1-dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/views/style/StyleButton.css">
@@ -31,8 +33,8 @@
     </select>
 </form>
 
-<p><fmt:message key="menu.button.signIn"/></p>
-<form action=${pageContext.servletContext.contextPath}/authorization method="post">
+<p  style="color:red; font-size: 35px;"><fmt:message key="menu.button.signIn"/></p>
+<form  style=" color: white; font-size: 16px;" action=${pageContext.servletContext.contextPath}/authorization method="post">
     <label for="email">
         <fmt:message key="reg.email"/>
         <input name="Email" type="email" id="email" placeholder=  <fmt:message key="reg.email"/>>

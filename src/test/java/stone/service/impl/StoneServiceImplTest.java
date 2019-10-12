@@ -15,6 +15,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -39,14 +40,14 @@ public class StoneServiceImplTest {
     }
     @Test
     public void shuoldReturnClientDeleteById() {
-        when(stoneCrudRepository.deleteById(any(Long.class))).thenReturn(gemstone);
+        when(stoneCrudRepository.deleteById(anyLong())).thenReturn(gemstone);
         when(stoneCrudRepository.size()).thenReturn(15);
         Stone client1 = stoneService.deleteById(1L);
         assertNotNull(gemstone);
     }
     @Test
     public void shuoldReturnClientFindById() {
-        when(stoneCrudRepository.findById(any(Long.class))).thenReturn(Optional.of(gemstone));
+        when(stoneCrudRepository.findById(anyLong())).thenReturn(Optional.of(gemstone));
         Optional<Stone> client1 = stoneService.findById(1L);
         assertNotNull(gemstone);
     }

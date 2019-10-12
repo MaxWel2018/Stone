@@ -1,14 +1,23 @@
 package stone.domain;
 
-import org.springframework.stereotype.Component;
+import stone.enums.AccessLevel;
 
-public class Client {
-    private Long id;
+public class User {
     private final String email;
     private final String password;
     private final String name;
     private final String surName;
     private final String phone;
+    private Long id;
+    private AccessLevel accessLevel;
+
+    public void setAccessLevel(AccessLevel accessLevel) {
+        this.accessLevel = accessLevel;
+    }
+
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
+    }
 
     public String getPhone() {
         return phone;
@@ -38,13 +47,14 @@ public class Client {
         return surName;
     }
 
-    private Client(Builder builder) {
+    private User(Builder builder) {
         id = builder.id;
         email = builder.email;
         password = builder.password;
         name = builder.name;
         surName = builder.surName;
         this.phone = builder.phone;
+        this.accessLevel = builder.accessLevel;
     }
 
     public static Builder builder() {
@@ -59,12 +69,18 @@ public class Client {
         private String password;
         private String name;
         private String surName;
+        private AccessLevel accessLevel = AccessLevel.CLIENT;
 
         private Builder() {
         }
 
         public Builder withId(Long val) {
             id = val;
+            return this;
+        }
+
+        public Builder withAccessLevel(AccessLevel accessLevel) {
+            this.accessLevel = accessLevel;
             return this;
         }
 
@@ -93,8 +109,8 @@ public class Client {
             return this;
         }
 
-        public Client build() {
-            return new Client(this);
+        public User build() {
+            return new User(this);
         }
     }
 }

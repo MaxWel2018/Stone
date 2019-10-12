@@ -8,22 +8,22 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import stone.domain.Client;
+import stone.domain.User;
 import stone.exception.dontCorrectArgumentRuntimeException;
-import stone.repository.contract.ClientCrudRepository;
+import stone.repository.contract.UserCrudRepository;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
-public class ClientServiceImplTestException {
+public class UserServiceImplTestException {
     @Mock
-    private ClientCrudRepository clientRepository;
+    private UserCrudRepository clientRepository;
 
     @InjectMocks
-    private ClientServiceImpl clientService;
-    private Client client = Client.builder().withName("name").withEmail("mail@gmail.com").build();
+    private UserServiceImpl clientService;
+    private User user = User.builder().withName("name").withEmail("mail@gmail.com").build();
 
 
     @After
@@ -37,20 +37,20 @@ public class ClientServiceImplTestException {
     public void shouldReturnExceptionWithIdLessThenZero() {
         when(clientRepository.size()).thenReturn(9);
         exception.expect(dontCorrectArgumentRuntimeException.class);
-        exception.expectMessage(containsString("Client dont found"));
+        exception.expectMessage(containsString("User dont found"));
         clientService .deleteById(-2L);
     }
     @Test
     public void shouldReturnExceptionWithIdMoreSizeRepository() {
         when(clientRepository.size()).thenReturn(9);
         exception.expect(dontCorrectArgumentRuntimeException.class);
-        exception.expectMessage(containsString("Client dont found"));
+        exception.expectMessage(containsString("User dont found"));
         clientService.deleteById(11L);
     }
 
     @Test
     public void shouldReturnExceptionWithNull() {
-        when(clientRepository.save(any(Client.class))).thenReturn(client);
+        when(clientRepository.save(any(User.class))).thenReturn(user);
         exception.expect(dontCorrectArgumentRuntimeException.class);
         exception.expectMessage(containsString("Arrgument = Null"));
         clientService.register(null);

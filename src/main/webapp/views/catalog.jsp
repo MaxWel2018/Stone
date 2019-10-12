@@ -5,7 +5,7 @@
   Time: 11:31 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" errorPage="error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
@@ -25,7 +25,6 @@
 <form action="">
     <select class="custom-select  select-size" id="language" name="language"
             onchange="submit()" style="width: 150px; margin-right: 80%; margin-top: 10px;">
-        <
         <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
         <option value="ru" ${language == 'ru' ? 'selected' : ''}>Русский</option>
     </select>

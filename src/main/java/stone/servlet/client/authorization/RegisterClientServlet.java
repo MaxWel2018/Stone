@@ -1,8 +1,8 @@
 package stone.servlet.client.authorization;
 
-import stone.domain.Client;
+import stone.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import stone.service.contract.ClientService;
+import stone.service.contract.UserService;
 import stone.servlet.AbstractServlet;
 import stone.servlet.client.form.ClientRegistration;
 
@@ -19,10 +19,10 @@ public class RegisterClientServlet extends AbstractServlet {
     @Autowired
     ClientRegistration clientRegistration;
     @Autowired
-    ClientService clientService;
+    UserService userService;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Client client = clientRegistration.createClient(request);
-        clientService.register(client);
+        User user = clientRegistration.createClient(request);
+        userService.register(user);
         response.sendRedirect(String.format("%s%s", request.getContextPath(), "/menu"));
     }
 

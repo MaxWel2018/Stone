@@ -15,8 +15,9 @@
 <fmt:setBundle basename="messages"/>
 <html lang="${param.lang}">
 <head>
-    <title>Filter</title>
+    <title>Add stone</title>
     <link rel="stylesheet" href="/views/style/styleCatalog.css">
+    <link rel="stylesheet" href="/views/style/addStone.css">
     <link rel="stylesheet" href="views/bootstrap-4.3.1-dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/views/style/StyleButton.css">
@@ -32,44 +33,57 @@
             key="menu.button.logOut"/>
     </a>
 </form>
-<p style="color:white; font-size: 25px; text-align:  center;"><fmt:message key="filter.text.param"/></p>
-<form action="${pageContext.servletContext.contextPath}/filter" method="get">
-    <label>
-        <select name="param1">
-            <c:forEach items="${transparency}" var="item">
-            <option value=${item.getRankingPosition()}>${item} </option>
+<form style="display: flex;flex-direction: column;" class="white-text"
+      action="${pageContext.servletContext.contextPath}/addStone" method="POST">
+
+    <fmt:message
+            key="catalog.text.color"/>
+    <label class="white-text">
+        <select name="color">
+            <c:forEach items="${color}" var="item">
+                <option value=${item}>${item}</option>
             </c:forEach>
         </select>
     </label>
+    <fmt:message
+            key="catalog.text.price"/>
+    <label for="price">
+        <input type="text" id="price" name="price" placeholder= <fmt:message key="catalog.text.price"/>>
+    </label>
+    <fmt:message
+            key="catalog.text.weight"/>
+    <label for="weight">
+        <input type="text" id="weight" name="weight" placeholder= <fmt:message key="catalog.text.weight"/>>
+    </label>
+    <fmt:message
+            key="catalog.text.type"/>
     <label>
-        <select name="param2">
-            <c:forEach items="${transparency}" var="item">
-                <option value=${item.getRankingPosition()}>${item} </option>
+        <select name="type">
+            <c:forEach items="${typeGem}" var="item">
+                <option value=${item}>${item}</option>
+            </c:forEach>
+            <c:forEach items="${typeSem}" var="item">
+                <option value=${item}>${item}</option>
             </c:forEach>
         </select>
     </label>
-    <input type="submit" value=<fmt:message key="filter.filter"/>>
+    <fmt:message
+            key="catalog.text.transparency"/>
+    <label>
+        <select name="transparency">
+            <c:forEach items="${transparency}" var="item">
+                <option value=${item}>${item}</option>
+            </c:forEach>
+        </select>
+    </label>
+    <input type="submit" value= <fmt:message key="reg.button.submite"/>>
+
+    <a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/menu"><fmt:message
+            key="reg.button.backToMenu"/></a>
+
 </form>
-<a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/backet"><fmt:message key="filter.backToBacket"/> </a>
 
 
-<div class="wrapper">
-    <form action="${pageContext.servletContext.contextPath}/catalog" method="post">
-        <div class="flex" STYLE="flex-wrap: wrap;">
-
-            <c:forEach items="${stonesFilter}" var="stone">
-                <label class="element">
-                    <p><fmt:message key="catalog.text.type"/> ${stone.getType()}</p>
-                    <p><fmt:message key="catalog.text.color"/>  ${stone.getColor()}</p>
-                    <p><fmt:message key="catalog.text.weight"/>  ${stone.getWeight()}</p>
-                    <p><fmt:message key="catalog.text.transparency"/>  ${stone.getTransparency()}</p>
-                    <p><fmt:message key="catalog.text.price"/>  ${stone.getPrice()}$</p>
-                    <img style="width: 200px; height: 200px;" src="${stone.getImg()}" alt="img"/>
-                </label>
-            </c:forEach>
-        </div>
-    </form>
-</div>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 </body>

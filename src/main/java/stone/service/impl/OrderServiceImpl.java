@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order deleteById(Long id) {
-        if (id < 0 && id<orderRepository.size()) {
+        if (id < 0 || id>orderRepository.size()) {
             throw new dontCorrectArgumentRuntimeException("Order don't found");
         }
         return orderRepository.deleteById(id);

@@ -30,15 +30,15 @@ private final NecklaceCrudRepository necklaceCrudRepository;
 
     @Override
     public Optional<Necklace> findById(Long id) {
-        return Optional.ofNullable(necklaceCrudRepository.findById(id).orElseThrow(() -> new dontCorrectArgumentRuntimeException("Client dont found")));
+        return Optional.ofNullable(necklaceCrudRepository.findById(id).orElseThrow(() -> new dontCorrectArgumentRuntimeException("User dont found")));
 
     }
 
     @Override
     public Necklace deleteById(Long id) {
         if (id < 0 || id > necklaceCrudRepository.size()) {
-            LOGGER.info("Client dont found");
-            throw new dontCorrectArgumentRuntimeException("Client dont found");
+            LOGGER.info("User dont found");
+            throw new dontCorrectArgumentRuntimeException("User dont found");
         }
         return necklaceCrudRepository.deleteById(id);
     }

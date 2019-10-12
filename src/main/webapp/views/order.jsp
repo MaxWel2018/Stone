@@ -5,7 +5,7 @@
   Time: 2:48
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" errorPage="error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
@@ -34,10 +34,12 @@
             key="menu.button.logOut"/>
     </a>
 </form>
-<a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/catalog">Back to Catalog </a>
+<a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/catalog"><fmt:message
+        key="backet.backToCatalog"/> </a>
 
 
-<p style="color:white; font-size: 30px">Уважаемый ${name} ${surName}  Ваш заказ передан в обработку! Ожидайте СМС от службы доставки </p>
+<p style="color:white; font-size: 30px"><fmt:message key="backet.dr"/>${name} ${surName} <fmt:message
+        key="message.finale.waitSms"/></p>
 <!-- подключение popper.js, необходимого для корректной работы некоторых плагинов Bootstrap 4 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">

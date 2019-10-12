@@ -7,11 +7,11 @@ import static stone.service.ValidateService.notNull;
 
 public abstract class Stone implements Comparable<Stone> {
     protected Long id;
-    protected  Color color;
-    protected  Integer price;
-    protected  Double weight;
-    protected  Transparency transparency;
-    protected  String type;
+    protected Color color;
+    protected Integer price;
+    protected Double weight;
+    protected Transparency transparency;
+    protected String type;
     protected String img;
 
     public String getImg() {

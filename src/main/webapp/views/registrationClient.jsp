@@ -5,7 +5,7 @@
   Time: 2:48
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" errorPage="error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
@@ -16,6 +16,8 @@
 <html lang="${param.lang}">
 <head>
     <title>Registration</title>
+    <link rel="stylesheet" href="/views/style/styleRegistration.css">
+    <link rel="stylesheet" href="/views/style/styleCatalog.css">
     <link rel="stylesheet" href="views/bootstrap-4.3.1-dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/views/style/StyleButton.css">
@@ -30,10 +32,10 @@
         <option value="ru" ${language == 'ru' ? 'selected' : ''}>Русский</option>
     </select>
 </form>
-<p><fmt:message
+<p style="color:red; font-size: 35px"><fmt:message
         key="reg.registration"/></p>
 
-<form action="${pageContext.servletContext.contextPath}/register" method="POST">
+<form class="form" style="display:flex; flex-direction: column; color: white;" action="${pageContext.servletContext.contextPath}/register" method="POST">
     <label for="email">
         <fmt:message
                 key="reg.email"/> </label>
@@ -72,9 +74,9 @@
     <fmt:message key="reg.phone"/>
            maxlength="13" minlength="10" autocomplete="off" required>
 
-    <input type="submit" value= <fmt:message key="reg.button.submite"/>>
+    <input class="btn-success my-btn" type="submit" value= <fmt:message key="reg.button.submite"/>>
 
-    <a class=" btn btn-primary " href="${pageContext.servletContext.contextPath}/menu"><fmt:message key="reg.button.backToMenu"/></a>
+    <a class=" btn btn-primary my-btn" href="${pageContext.servletContext.contextPath}/menu"><fmt:message key="reg.button.backToMenu"/></a>
     </div>
 
 </form>

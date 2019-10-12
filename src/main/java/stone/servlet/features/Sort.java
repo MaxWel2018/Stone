@@ -1,4 +1,4 @@
-package stone.servlet;
+package stone.servlet.features;
 
 import edu.emory.mathcs.backport.java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;

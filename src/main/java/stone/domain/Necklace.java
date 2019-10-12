@@ -15,6 +15,8 @@ public class Necklace {
         this.weight = weight;
     }
 
+
+
     public Necklace() {
     }
 

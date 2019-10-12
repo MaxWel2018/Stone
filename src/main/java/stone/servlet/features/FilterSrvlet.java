@@ -1,4 +1,4 @@
-package stone.servlet;
+package stone.servlet.features;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import stone.servlet.AbstractServlet;
@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/sort")
-public class SortServlet extends AbstractServlet {
+@WebServlet("/filter")
+public class FilterSrvlet extends AbstractServlet {
     @Autowired
-    private Sort sort;
+    private Filter filter;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        sort.sort(req);
-        req.getRequestDispatcher("/views/sort.jsp").forward(req,resp);
+        filter.filter(req);
+        req.getRequestDispatcher("/views/filter.jsp").forward(req, resp);
     }
 
     @Override

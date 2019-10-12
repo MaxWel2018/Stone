@@ -1,4 +1,4 @@
-package stone.servlet;
+package stone.servlet.features;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -14,13 +14,12 @@ public class Gemstone extends Stone {
         weight = builder.weight;
         transparency = builder.transparency;
         type = builder.type;
-        img =builder.img;
+        img = builder.img;
     }
 
     public static Builder newBuilder() {
         return new Builder();
     }
-
 
 
     @Override
@@ -56,7 +55,7 @@ public class Gemstone extends Stone {
         }
 
         public Builder withPrice(Integer price) {
-           this.price = price;
+            this.price = price;
             return this;
         }
 
@@ -71,7 +70,7 @@ public class Gemstone extends Stone {
         }
 
         public Builder withType(Object type) {
-           this.type = type.toString();
+            this.type = type.toString();
             return this;
         }
 

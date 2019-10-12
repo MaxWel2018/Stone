@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -35,14 +36,14 @@ public class NecklaceServiceImplTest {
 
     @Test
     public void shuoldReturnNecklaceDeleteById() {
-        when(necklaceCrudRepository.deleteById(any(Long.class))).thenReturn(necklace);
+        when(necklaceCrudRepository.deleteById(anyLong())).thenReturn(necklace);
         when(necklaceCrudRepository.size()).thenReturn(15);
         Necklace  necklace1 = necklaceService.deleteById(1L);
         assertNotNull(necklace1);
     }
     @Test
     public void shuoldReturnNecklaceFindById() {
-        when(necklaceCrudRepository.findById(any(Long.class))).thenReturn(Optional.of(necklace));
+        when(necklaceCrudRepository.findById(anyLong())).thenReturn(Optional.of(necklace));
         Optional<Necklace> necklace = necklaceService.findById(1L);
         assertNotNull(necklace);
     }

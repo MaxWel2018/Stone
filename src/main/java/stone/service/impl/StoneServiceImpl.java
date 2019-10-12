@@ -35,7 +35,9 @@ public class StoneServiceImpl implements StoneService {
 
     @Override
     public Stone deleteById(Long id) {
-        notNull(id);
+        if (id < 0 || id>stoneRepository.size()) {
+            throw new dontCorrectArgumentRuntimeException("Order don't found");
+        }
         return stoneRepository.deleteById(id);
     }
 

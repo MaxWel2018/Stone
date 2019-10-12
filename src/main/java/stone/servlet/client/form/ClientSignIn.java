@@ -2,9 +2,9 @@ package stone.servlet.client.form;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import stone.domain.Client;
+import stone.domain.User;
 import stone.exception.dontCorrectArgumentRuntimeException;
-import stone.service.contract.ClientService;
+import stone.service.contract.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,7 +13,7 @@ import java.util.Optional;
 @Component
 public class ClientSignIn {
 
-    private ClientService clientService;
+    private UserService userService;
 
     private String email;
     private String password;
@@ -22,13 +22,13 @@ public class ClientSignIn {
 
 
     @Autowired
-    public ClientSignIn(ClientService clientService) {
-        this.clientService = clientService;
+    public ClientSignIn(UserService userService) {
+        this.userService = userService;
     }
 
     public void checkDate(HttpServletRequest req) {
         saveDate(req);
-        clientService.login(email, password);
+        userService.login(email, password);
         HttpSession session = req.getSession();
         session.setAttribute("email", email);
         session.setAttribute("password", password);
@@ -40,11 +40,11 @@ public class ClientSignIn {
     private void saveDate(HttpServletRequest req) {
         email = req.getParameter("Email");
         password = req.getParameter("password");
-        Optional<Client> client = Optional.ofNullable(clientService.
+        Optional<User> client = Optional.ofNullable(userService.
                 findByEmail(email).orElseThrow(
                 () -> new dontCorrectArgumentRuntimeException("client dont found")));
-        name = client.map(Client::getName).orElse(name = "");
-        surName = client.map(Client::getSurName).orElse(surName = "");
+        name = client.map(User::getName).orElse(name = "");
+        surName = client.map(User::getSurName).orElse(surName = "");
         ;
 
     }
